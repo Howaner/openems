@@ -4,13 +4,7 @@
     <energymonitor-chart class="ion-margin-bottom" [currentData]="currentData"></energymonitor-chart>
   } @else {
     <ion-card>
-      <ion-item lines="full" style="--background: var(--ion-background-color-card-header)">
-        <ion-icon size="large" slot="start" name="laptop-outline" color="normal"></ion-icon>
-        <ion-label>
-          {{"EDGE.INDEX.ENERGYMONITOR.TITLE" | translate}}
-        </ion-label>
-      </ion-item>
-      <ion-card-content>
+      <ion-card-content style="border-top: none">
         <energymonitor-chart [currentData]="currentData"></energymonitor-chart>
       </ion-card-content>
     </ion-card>

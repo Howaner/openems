@@ -376,10 +376,14 @@ ion-skeleton-text {
     --background: var(--body-background);
 }
 
+edge ion-content {
+    --background: var(--body-background);
+}
+
 ion-card {
     //--background: #DEE5EA;
     //--ion-background-color-card-header: #DEE5EA;
-    //box-shadow: none;
+    box-shadow: none;
 
     --ion-background-color-card-header: var(--ion-color-light-contrast-rgb);
 
@@ -396,7 +400,7 @@ ion-card {
     }
 }
 
-ion-grid {
+edge ion-grid {
     padding: 24px 64px;
 }
 

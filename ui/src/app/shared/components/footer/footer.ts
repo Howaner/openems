@@ -16,11 +16,11 @@ import { Role } from "../../type/role";
     }
 
     :host[data-isSmartPhone=false] {
-      position: sticky;
       bottom: 0;
-      width: 100%;
+      left: 0;
+      width: 400px;
 
-      font-size: 14px !important;
+      font-size: 11px !important;
       :is(ion-row) {
         text-align: center;
       }
@@ -29,6 +29,13 @@ import { Role } from "../../type/role";
 
         font-size: inherit;
       }
+    }
+
+    .footerline {
+        width: 100%;
+        height: 1px;
+        background-color: #ccc;
+        margin: 10px 0;
     }
   `],
     templateUrl: "footer.html",

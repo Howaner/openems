@@ -128,13 +128,16 @@
                     (navigateAbsolute)="navigationService.navigateAbsolute($event)"></oe-navigation-chips>
                 }
             </ion-list>
+
+            @if (isUserAllowedToSeeFooter && !isHistoryDetailView) {
+    <oe-footer #appFooter slot="fixed"></oe-footer>
+  }
         </ion-content>
 
+        
     </ion-menu>
 </ng-template>
 
 <ng-template #footer>
-    @if (isUserAllowedToSeeFooter && !isHistoryDetailView) {
-    <oe-footer #appFooter slot="fixed"></oe-footer>
-    }
+  
 </ng-template>
