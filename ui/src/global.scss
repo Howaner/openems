@@ -370,6 +370,52 @@ ion-skeleton-text {
     --background-rgb: var(--ion-color-light-contrast-rgb);
 }
 
+// HACKATHON: Changes Franz
+
+.live-view ion-content {
+    --background: var(--body-background);
+}
+
+ion-card {
+    //--background: #DEE5EA;
+    //--ion-background-color-card-header: #DEE5EA;
+    //box-shadow: none;
+
+    --ion-background-color-card-header: var(--ion-color-light-contrast-rgb);
+
+    ion-item .item-native {
+        border: none !important;
+    }
+
+    ion-item {
+        --border-width: 0px;
+    }
+
+    ion-icon {
+        margin-right: 12px;
+    }
+}
+
+ion-grid {
+    padding: 24px 64px;
+}
+
+.header-md {
+    box-shadow: none;
+}
+
+ion-card-content {
+    //background: #DEE5EA;
+    //box-shadow: none;
+    border-top: 1px solid rgba(var(--body-background-contrast-rgb), 0.4);
+}
+
+ion-button {}
+
+ion-button ion-icon {
+    filter: none;
+}
+
 #toast-container {
     font-family: $font-family;
     text-align: center;

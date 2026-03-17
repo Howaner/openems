@@ -1,4 +1,4 @@
-import { alertCircleOutline, checkmarkDoneCircleOutline, flame, informationCircleOutline, warningOutline } from "ionicons/icons";
+import { alertCircleOutline, flame, informationCircleOutline, warningOutline } from "ionicons/icons";
 import { BaseMeta } from "src/environments";
 
 export const OemMeta: BaseMeta = {
@@ -40,7 +40,7 @@ export const OemMeta: BaseMeta = {
             EVCS: "assets/img/icon/evcs.svg",
         },
         STATUS: {
-            CHECKMARK: checkmarkDoneCircleOutline,
+            CHECKMARK: "assets/img/icon/done-outline.svg",
             ERROR: alertCircleOutline,
             WARNING: warningOutline,
             INFO: informationCircleOutline,
