@@ -91,7 +91,7 @@ export class EnergymonitorChartComponent implements OnInit, OnDestroy {
             size = window.innerHeight;
         }
         this.height = this.width = size;
-        this.translation = `translate(${this.width / 2}, ${this.height / 2})`;
+        this.translation = `translate(${this.width / 2 + 5}, ${this.height / 2 + 5})`;
         const outerRadius = Math.min(this.width, this.height) / 2;
         const innerRadius = outerRadius - (outerRadius * 0.1378);
         // All sections from update() in section

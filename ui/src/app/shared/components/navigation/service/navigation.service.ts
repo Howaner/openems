@@ -47,7 +47,6 @@ export class NavigationService {
 
     public static forceNewNavigation(edge: Edge | null): boolean {
         const config = edge?.getCurrentConfig() ?? null;
-        return true;
 
         if (config == null) {
             return false;

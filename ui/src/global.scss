@@ -384,9 +384,10 @@ ion-card {
     //--background: #DEE5EA;
     //--ion-background-color-card-header: #DEE5EA;
     box-shadow: none;
+    outline: 1px solid rgb(204, 204, 204);
 
     //--ion-background-color-card-header: var(--ion-color-light-contrast-rgb);
-    --ion-background-color-card-header: #efeeec;
+    --ion-background-color-card-header: #fafafa;
 
     ion-item .item-native {
         border: none !important;
@@ -412,8 +413,8 @@ edge ion-grid {
 ion-card-content {
     //background: #DEE5EA;
     //box-shadow: none;
-    background: #f7f6f4;
-    border-top: 1px solid rgba(var(--body-background-contrast-rgb), 0.4);
+    //background: rgb(252, 252, 252);
+    border-top: 1px solid rgba(204, 204, 204, 1.0);
 }
 
 ion-button {}

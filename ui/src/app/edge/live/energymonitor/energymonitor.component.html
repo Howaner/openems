@@ -3,10 +3,6 @@
     <!-- Hide ion-card with bottom navigation -->
     <energymonitor-chart class="ion-margin-bottom" [currentData]="currentData"></energymonitor-chart>
   } @else {
-    <ion-card>
-      <ion-card-content style="border-top: none">
         <energymonitor-chart [currentData]="currentData"></energymonitor-chart>
-      </ion-card-content>
-    </ion-card>
   }
 }

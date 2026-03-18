@@ -28,6 +28,7 @@ import { Role } from "../../type/role";
       :is(ion-item) {
 
         font-size: inherit;
+        color: rgb(160, 160, 160);
       }
     }
 
