@@ -385,7 +385,8 @@ ion-card {
     //--ion-background-color-card-header: #DEE5EA;
     box-shadow: none;
 
-    --ion-background-color-card-header: var(--ion-color-light-contrast-rgb);
+    //--ion-background-color-card-header: var(--ion-color-light-contrast-rgb);
+    --ion-background-color-card-header: #efeeec;
 
     ion-item .item-native {
         border: none !important;
@@ -411,6 +412,7 @@ edge ion-grid {
 ion-card-content {
     //background: #DEE5EA;
     //box-shadow: none;
+    background: #f7f6f4;
     border-top: 1px solid rgba(var(--body-background-contrast-rgb), 0.4);
 }
 
