@@ -607,6 +607,7 @@
     "CHANGE_FAILED": "Änderung fehlgeschlagen",
     "CHARGE": "Beladung",
     "CHARGE_DISCHARGE": "Be-/Entladung",
+    "ALL_COMPONENTS_OK": "Alle Komponenten OK",
     "COMPONENT_COUNT": "Anzahl Komponenten",
     "COMPONENT_INACTIVE": "Komponente ist inaktiv!",
     "CONNECTION_LOST": "Verbindung unterbrochen. Versuche die Verbindung wiederherzustellen.",

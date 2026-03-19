@@ -9,122 +9,76 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-@if (edge && components) {
+@if (edge && stateCategories !== null) {
   @if (edge.currentData | async; as currentData) {
     <ion-content>
       <ion-card-content>
-        @if (currentData.summary.system; as sum) {
-          <ion-item lines="full">
-            <ion-icon color="primary" name="analytics-outline"></ion-icon>
-            <ion-label class="ion-padding-start">
-              {{"GENERAL.TOTAL_STATE" | translate}}
-            </ion-label>
-            @switch (sum.state) {
-              @case (0) {
-                <ion-icon color="success" name="oe-checkmark"></ion-icon>
-              }
-              @case (1) {
-                <ion-icon color="success" name="oe-info"></ion-icon>
-              }
-              @case (2) {
-                <ion-icon color="warning" name="oe-warning"></ion-icon>
-              }
-              @case (3) {
-                <ion-icon color="danger" name="oe-error"></ion-icon>
-              }
-            }
-          </ion-item>
+        @if (stateCategories.length === 0) {
+          <ion-list>
+            <ion-item lines="none">
+              <ion-icon color="success" name="oe-checkmark"></ion-icon>
+              <ion-label class="ion-padding-start" translate>GENERAL.ALL_COMPONENTS_OK</ion-label>
+            </ion-item>
+          </ion-list>
         }
         <ion-list>
-          @for (category of components; track category) {
-            <ion-item-group>
-              <ion-item lines="inset">
-                <ion-icon class="normal-icon" name="{{ category.category.icon }}"></ion-icon>
-                <ion-label class="ion-padding-start">
-                  {{category.category.title}}
-                </ion-label>
-              </ion-item>
-            </ion-item-group>
+          @for (category of stateCategories; track category.label) {
+            <ion-item lines="none" [class.ion-padding-top]="!$first">
+              <ion-icon [color]="category.color" [name]="category.icon" slot="start"></ion-icon>
+              <ion-label>{{ category.components.length }} {{ category.label | translate }}</ion-label>
+            </ion-item>
             @for (item of category.components; track item) {
-              @if (item.id !== '_sum') {
-                <ion-item lines="none">
-                  <ion-label class="ion-text-wrap">
-                    <ion-text color="primary">
-                      <h3>{{ item.alias }}
-                        @if (item.id !== item.alias) {
-                          <span> {{ item.id }}</span>
-                        }
-                        @if (!item.isEnabled) {
-                          <small> (<span translate>GENERAL.COMPONENT_INACTIVE</span>) </small>
-                        }
-                      </h3>
-                    </ion-text>
-                    @if (config.factories[item.factoryId]; as factory) {
-                      <p class="custom-channels-text">{{ factory.name }}</p>
-                    }
-                    @if (item['showProperties']) {
-                      @for (address of subscribedInfoChannels; track address) {
-                        @if (address.componentId === item.id && address.channelId !== 'State') {
-                          @if (currentData.channel[address.toString()] === 1) {
-                            <!-- State-Channel is active -->
-                            <ion-label class="ion-text-wrap">
-                              @switch (channels[address.componentId][address.channelId].level) {
-                                @case ('INFO') {
-                                  <ion-text color="success" translate>
-                                    GENERAL.INFO&nbsp;
-                                  </ion-text>
-                                }
-                                @case ('WARNING') {
-                                  <ion-text color="warning" translate>
-                                    GENERAL.WARNING&nbsp;
-                                  </ion-text>
-                                }
-                                @case ('FAULT') {
-                                  <ion-text color="danger" translate>
-                                    GENERAL.FAULT&nbsp;
-                                  </ion-text>
-                                }
-                              }
-                              @if (channels[address.componentId][address.channelId].text.length > 0) {
-                                <ion-text>
-                                  {{ channels[address.componentId][address.channelId].text }}
-                                </ion-text>
-                              } @else {
-                                {{ address.channelId.toString() }}
-                              }
-                            </ion-label>
-                          }
-                        }
+              <ion-item lines="inset">
+                <ion-label class="ion-text-wrap">
+                  <ion-text color="primary">
+                    <h3>{{ item.alias }}
+                      @if (item.id !== item.alias) {
+                        <span> {{ item.id }}</span>
                       }
-                    }
-                  </ion-label>
-                  @if ((currentData.channel[item.id+'/State'] ?? -1) > 0 && !item['showProperties']) {
-                    <ion-icon style="cursor: pointer" name="arrow-down-circle-outline" color="primary"
-                      (click)="item['showProperties'] = !item['showProperties']; subscribeInfoChannels(item)">
-                    </ion-icon>
+                      @if (!item.isEnabled) {
+                        <small> (<span translate>GENERAL.COMPONENT_INACTIVE</span>) </small>
+                      }
+                    </h3>
+                  </ion-text>
+                  @if (config.factories[item.factoryId]; as factory) {
+                    <p class="custom-channels-text">{{ factory.name }}</p>
                   }
                   @if (item['showProperties']) {
-                    <ion-icon style="cursor: pointer" name="arrow-up-circle-outline" color="primary"
-                      (click)="item['showProperties'] = !item['showProperties']; unsubscribeInfoChannels(item)">
-                    </ion-icon>
+                    @for (entry of channels[item.id] | keyvalue; track entry.key) {
+                      @if (currentData.channel[item.id + '/' + entry.key] === 1) {
+                        <ion-label class="ion-text-wrap">
+                          @switch (entry.value.level) {
+                            @case ('INFO') {
+                              <ion-text color="success" translate>GENERAL.INFO&nbsp;</ion-text>
+                            }
+                            @case ('WARNING') {
+                              <ion-text color="warning" translate>GENERAL.WARNING&nbsp;</ion-text>
+                            }
+                            @case ('FAULT') {
+                              <ion-text color="danger" translate>GENERAL.FAULT&nbsp;</ion-text>
+                            }
+                          }
+                          @if (entry.value.text.length > 0) {
+                            <ion-text>{{ entry.value.text }}</ion-text>
+                          } @else {
+                            {{ entry.key }}
+                          }
+                        </ion-label>
+                      }
+                    }
                   }
-                  @switch (currentData.channel[item.id+'/State']) {
-                    @case (0) {
-                      <ion-icon color="success" name="oe-checkmark">
-                      </ion-icon>
-                    }
-                    @case (1) {
-                      <ion-icon color="success" name="oe-info"></ion-icon>
-                    }
-                    @case (2) {
-                      <ion-icon color="warning" name="oe-warning"></ion-icon>
-                    }
-                    @case (3) {
-                      <ion-icon color="danger" name="oe-error"></ion-icon>
-                    }
-                  }
-                </ion-item>
-              }
+                </ion-label>
+                @if ((currentData.channel[item.id+'/State'] ?? -1) > 0 && !item['showProperties']) {
+                  <ion-icon style="cursor: pointer" name="arrow-down-circle-outline" color="primary"
+                    (click)="item['showProperties'] = !item['showProperties']; subscribeInfoChannels(item)">
+                  </ion-icon>
+                }
+                @if (item['showProperties']) {
+                  <ion-icon style="cursor: pointer" name="arrow-up-circle-outline" color="primary"
+                    (click)="item['showProperties'] = !item['showProperties']; unsubscribeInfoChannels(item)">
+                  </ion-icon>
+                }
+              </ion-item>
             }
           }
         </ion-list>
@@ -132,3 +86,4 @@
     </ion-content>
   }
 }
+

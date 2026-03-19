@@ -3,11 +3,11 @@
     [fullScreen]="false" name="live-energymonitor"></ngx-spinner>
   <svg style.width="{{ width + 10 }}px" style.height="{{ height + 10 }}px" overflow="visible">
     <!-- !graphic -->
-    <svg:g [attr.transform]="translation">
-      <svg:g consumptionsection transform="translate(5, 0)"></svg:g>
-      <svg:g gridsection transform="translate(-5, 0)"></svg:g>
-      <svg:g productionsection transform="translate(0, -5)"></svg:g>
-      <svg:g storagesection transform="translate(0, 5)"></svg:g>
+    <svg:g [attr.transform]="translation" style="--ion-color-medium-soft: var(--ion-color-light); --ion-color-light: var(--ion-background-percentagebar-color)">
+      <svg:g consumptionsection transform="translate(3, 0)"></svg:g>
+      <svg:g gridsection transform="translate(-3, 0)"></svg:g>
+      <svg:g productionsection transform="translate(0, -3)"></svg:g>
+      <svg:g storagesection transform="translate(0, 3)"></svg:g>
     </svg:g>
   </svg>
 </div>

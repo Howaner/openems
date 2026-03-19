@@ -612,6 +612,7 @@
     "COMPONENT_INACTIVE": "Component is not active!",
     "CONNECTION_LOST": "Connection lost. Trying to reconnect.",
     "CONSUMPTION": "Consumption",
+    "ALL_COMPONENTS_OK": "All components OK",
     "COUNTRY": {
       "AUSTRIA": "Austria",
       "CZECH": "Czech Republic",
